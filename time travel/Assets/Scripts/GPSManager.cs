@@ -13,7 +13,7 @@ public class GPSManager : MonoBehaviour
 
     void DisplayCoordinate()
     {
-        //给定一个坐标，转换成tilemap的X和Y
+        //Given a coordinate, convert the X and Y of the tilemap
         double longitude = -122.4194;
         double latitude = 37.7749;
         ConvertLatLngToTileMap(longitude, latitude);
@@ -68,7 +68,7 @@ public class GPSManager : MonoBehaviour
 
     public void LoadTile(int x,int y,int zoom)
     {
-        string tileServerUrl = "https://tile.openstreetmap.org/{0}/{1}/{2}.png"; // the URL of the tile server
+        string tileServerUrl = "https://mt.google.com/vt/lyrs=m&x=0&y=0&z=0"; // the URL of the tile server
         string url = string.Format(tileServerUrl, zoom, x, y);
         WebRequest www=WebRequest.Create(url);
         var response=www.GetResponse();
