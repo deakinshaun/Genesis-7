@@ -20,6 +20,8 @@ public class PortalScene : MonoBehaviour
     void OnTriggerEnter (Collider other)
     {
         Debug.Log("Camera is in trigger :))");
-        SceneManager.LoadScene("Example_World_1");
+        //SceneManager.LoadScene("Example_World_1");
+        int nextSceneIndex = Random.Range(0, 4);
+        SceneManager.LoadScene(nextSceneIndex, LoadSceneMode.Single);
     }
 }
