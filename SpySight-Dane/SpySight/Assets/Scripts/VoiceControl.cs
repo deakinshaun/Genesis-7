@@ -7,6 +7,7 @@ using Whisper;
 
 public class VoiceControl : MonoBehaviour
 {
+    public DropMarker dropMarker;
     public WhisperManager whisper;
     public MicrophoneRecord microphoneRecord;
     public bool streamSegments = true;
@@ -57,6 +58,10 @@ public class VoiceControl : MonoBehaviour
         if (printLanguage)
             text += $"\n\nLanguage: {res.Language}";
         outputText.text = text;
+        if (text.Contains("mark"))
+        {
+            dropMarker.drop();
+        }
 
     }
 }
