@@ -1,0 +1,28 @@
+1. Initial commit of core 3d unity template
+- Created new unity project using 3D core template
+
+2. ReCommit of unity project with new name and included gitignore
+- Deleted old unity project from repository
+- Created new unity project with new name based off oganization input
+- Made sure gitignore was in the correct base Unity folder this time before commiting and pushing changes
+
+3. Added Oculus VR support & player prefab
+- Switched platform to Android
+- Added XR Plugin Management for Oculus
+- Imported Oculus Integration Package
+- Added Player GameObject as a prefab
+	> Audio Listener Component - Allows the player to hear audio sources (game sounds)
+	> OVRPlayerController - Provides movement for the player
+		> OVRCameraRig - Provides VR camera head and hand tracking for the player & Also contains left and right controller prefabs
+	> Custom Head model
+
+4. Added Voice Communication for participants & Improved Hierarchy organization
+- Imported PhotonVoice 2 Package
+- Created new Photon Voice App ID
+- Added VoiceManager GameObject
+	> Voice GameObject
+		> VoiceManager(Script)
+		> Speaker (Prefab)
+	> Text mesh pro 3D UI to display voice chat status messages
+	> MicIndicator GameObject to show user if their mic was toggled on or off
+- Added dividers to the scene Hierarchy for better hierarchy
