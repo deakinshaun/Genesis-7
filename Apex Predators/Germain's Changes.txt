@@ -26,3 +26,24 @@
 	> Text mesh pro 3D UI to display voice chat status messages
 	> MicIndicator GameObject to show user if their mic was toggled on or off
 - Added dividers to the scene Hierarchy for better hierarchy
+
+5. Added Lobby & Arena, skyboxes, portal prefab and mirror prefab
+- Created foundations for Lobby and Arena areas
+	> Sperate areas with different groundMaterials and Skybox
+- Added Skyboxes for the lobby and arena
+	> used two 360 panoramic images from - https://skybox.blockadelabs.com/
+	> unlit shader that has culling turned off
+	> ArenaSkyboxMaterial and LobbySkyboxMaterial
+	> added two huge spheres and applied the skybox materials
+- Created Portal prefab
+	> Uses camera and render texture to allow user to see whats on the other side of the portal
+	> Contains:
+		> Door (Cube) - for 3D mesh
+		> ProjectionPlane (Plane) - for displaying render texture material
+		> PortalCamera (Camera) - used to create a render texture that other portals can use to display this portals destination
+- Created Mirror prefab
+	> Uses camera and render texture to produce mirror functionality
+
+
+
+
