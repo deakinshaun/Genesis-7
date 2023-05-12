@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class TestCubeButton : MonoBehaviour
 {
@@ -10,37 +12,34 @@ public class TestCubeButton : MonoBehaviour
     public Material off;
     public TextMeshProUGUI touchCountText;
     public TextMeshProUGUI buttonStatusText;
-    public Light mainLight;
+
+    public Button sceneButton1; // 引用场景切换按钮
+    public Button sceneButton2; // 引用第二个场景切换按钮
 
     private bool lightOn = false;
     private int touchCount = 0;
-    void Start()
-    {
-        //touchCountText.text = "0";
-        buttonStatusText.text = "off";
-        mainLight = GameObject.Find("Main Light").GetComponent<Light>();
+    public string SceneName;
+
+    private float delay = 2f;
+    private float timeOfLastSwitch;
+    private void Start()
+    {        
+        timeOfLastSwitch = Time.time;
     }
 
-    private void OnTriggerEnter(Collider other)
+    void OnTriggerEnter(Collider other)
     {
-        //touchCount++;
-        //touchCountText.text = "you have touched the button: " + touchCount.ToString() + " times";
-        lightOn = !lightOn;
-        lightObject.GetComponent<MeshRenderer>().material = lightOn ? on : off;
-        if (Application.platform == RuntimePlatform.Android)
+
+        touchCount++;
+        touchCountText.text = "Touch Count: " + touchCount.ToString();
+        SceneManager.LoadScene(SceneName);
+        if (Time.time - timeOfLastSwitch > delay)
         {
-            Handheld.Vibrate();
-        }
-        if (lightOn)
-        {
-            buttonStatusText.text = "You turn the light On";
-            mainLight.intensity = 1.0f;
-        }
-        else
-        {
-            buttonStatusText.text = "You turn the light Off";
-            mainLight.intensity = 0.0f;
+            SceneManager.LoadScene(SceneName);
+            
+            timeOfLastSwitch = Time.time;
         }
     }
-
 }
+
+
