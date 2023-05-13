@@ -16,7 +16,7 @@ public class TestCubeButton : MonoBehaviour
     public Button sceneButton1; // 引用场景切换按钮
     public Button sceneButton2; // 引用第二个场景切换按钮
 
-    private bool lightOn = false;
+    //private bool lightOn = false;
     private int touchCount = 0;
     public string SceneName;
 
