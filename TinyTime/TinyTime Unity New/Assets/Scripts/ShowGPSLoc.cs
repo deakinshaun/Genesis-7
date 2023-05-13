@@ -19,18 +19,25 @@ public class ShowGPSLoc : MonoBehaviour
         {
             DisplayCoords.text = "Location service is not enabled on this device";
         }
-        while (Input.location.status == LocationServiceStatus.Initializing && Input.location.isEnabledByUser)
-        {
-            DisplayCoords.text = "Please wait while this service is initialiing";
-        }
-        if (Input.location.status == LocationServiceStatus.Failed)
-        {
-            DisplayCoords.text = "Service failed, unable to determine location";
-        }
         else
         {
-            DisplayCoords.text = "Lat: " + Input.location.lastData.latitude + "\n" + "Long: " + Input.location.lastData.longitude + "\n"
-                + "Alt: " + Input.location.lastData.altitude + "\n" + "Timestamp:" + Input.location.lastData.timestamp;
+            if(Input.location.status == LocationServiceStatus.Running)
+            {
+                DisplayCoords.text = "Lat: " + Input.location.lastData.latitude + "Long: " + Input.location.lastData.longitude
+                + "Alt: " + Input.location.lastData.altitude + "Timestamp:" + Input.location.lastData.timestamp;
+            }
+            while (Input.location.status == LocationServiceStatus.Initializing && Input.location.isEnabledByUser)
+            {
+                DisplayCoords.text = "Please wait while this service is initialiing";
+            }
+
+            if (Input.location.status == LocationServiceStatus.Failed)
+            {
+                DisplayCoords.text = "Service failed, unable to determine location";
+            }
         }
+        
+        
+        
     }
 }
