@@ -25,4 +25,9 @@ public class CanvasFunction : MonoBehaviour
     {
         SceneManager.LoadScene("MR");
     }
+
+    public void SwitchSceneAR()
+    {
+        SceneManager.LoadScene("AR");
+    }
 }
