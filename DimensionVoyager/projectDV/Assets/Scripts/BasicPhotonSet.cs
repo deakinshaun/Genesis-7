@@ -5,6 +5,8 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Linq;
+using System.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -24,19 +26,25 @@ public class BasicPhotonSet : MonoBehaviour, INetworkRunnerCallbacks
         var clientTask = InitializeNetworkRunner(networkrunner, GameMode.AutoHostOrClient, NetAddress.Any(), SceneManager.GetActiveScene().buildIndex, null);
     }
 
-    async void startVR(GameMode mode)
+    protected virtual Task InitializeNetworkRunner(NetworkRunner runner, GameMode gameMode, NetAddress address, SceneRef scene, Action<NetworkRunner> initialized)
     {
-        networkManager = gameObject.AddComponent<NetworkRunner>();
+        var sceneManager = runner.GetComponents(typeof(MonoBehaviour)).OfType<INetworkSceneManager>().FirstOrDefault();
 
-        await networkManager.StartGame(new StartGameArgs()
+        if (sceneManager == null)
         {
-            GameMode = mode,
-            SessionName = "Playground",
-            Scene = SceneManager.GetActiveScene().buildIndex,
-            SceneManager = gameObject.AddComponent<NetworkSceneManagerDefault>(),
+            sceneManager = runner.gameObject.AddComponent<NetworkSceneManagerDefault>();
         }
-        );
         networkManager.ProvideInput = true;
+
+        return runner.StartGame(new StartGameArgs()
+        {
+            GameMode = gameMode,
+            Address = address,
+            Scene = scene,
+            SessionName = "Playground",
+            Initialized = initialized,
+            SceneManager = sceneManager,                
+        });
     }
     public void OnPlayerJoined(NetworkRunner runner, PlayerRef player)
     {

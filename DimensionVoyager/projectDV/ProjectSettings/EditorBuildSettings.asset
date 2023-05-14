@@ -8,12 +8,12 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/Scenes/MR.unity
     guid: 9fc0d4010bbf28b4594072e72b8655ab
-  - enabled: 0
+  - enabled: 1
     path: Assets/Scenes/Multi-user.unity
     guid: a64e946ba82ff5b46870cb9009e0f616
-  - enabled: 1
-    path: Assets/Scenes/PhysicalWorld.unity
-    guid: 35011f0b91b3fac41930214e9ec6eac9
+  - enabled: 0
+    path: 
+    guid: 00000000000000000000000000000000
   m_configObjects:
     Unity.XR.Oculus.Settings: {fileID: 11400000, guid: 4746aac647780f24e8bf9fda880bb6b3, type: 2}
     com.unity.xr.management.loader_settings: {fileID: 11400000, guid: a0413e96474471f4483fc129fc6e1de5, type: 2}
