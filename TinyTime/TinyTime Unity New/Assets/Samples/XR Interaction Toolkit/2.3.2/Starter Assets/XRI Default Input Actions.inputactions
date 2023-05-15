@@ -644,19 +644,8 @@
             "bindings": [
                 {
                     "name": "",
-                    "id": "71a4d23f-3e9a-4513-923b-ba388c5e84bf",
-                    "path": "<XRController>{LeftHand}/gripPressed",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "Generic XR Controller",
-                    "action": "Select",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "73325635-d9e5-481a-9279-ae7be089422d",
-                    "path": "<MetaAimHand>{LeftHand}/indexPressed",
+                    "id": "08cfb29c-54db-44b5-b770-77ffa8dcd6f3",
+                    "path": "<Keyboard>/#(I)",
                     "interactions": "",
                     "processors": "",
                     "groups": "Generic XR Controller",
@@ -1351,8 +1340,8 @@
                 },
                 {
                     "name": "",
-                    "id": "1d5b47ea-64e3-4b99-b620-de6c360908be",
-                    "path": "<MetaAimHand>{RightHand}/indexPressed",
+                    "id": "e8f91f93-9b69-4885-8cb8-4183a369aa85",
+                    "path": "<Keyboard>/#(I)",
                     "interactions": "",
                     "processors": "",
                     "groups": "Generic XR Controller",
