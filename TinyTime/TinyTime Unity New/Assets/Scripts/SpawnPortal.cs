@@ -24,7 +24,7 @@ public class SpawnPortal : MonoBehaviour
 
     public void OnSpawnPortal()
     {
-        var RandPosition = new Vector3(Random.Range(-10.0f, 10.0f), 1, Random.Range(-10.0f, 10.0f));
+        var RandPosition = new Vector3(Random.Range(-5.0f, 5.0f), 1, Random.Range(-5.0f, 5.0f));
         Instantiate(PortalIN, RandPosition, Quaternion.identity);
         Debug.Log("P pressed");
     }
