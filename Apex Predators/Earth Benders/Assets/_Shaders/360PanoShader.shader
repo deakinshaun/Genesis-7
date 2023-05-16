@@ -7,8 +7,10 @@ Shader "Unlit/360PanoShader"
     SubShader
     {
         Tags { "RenderType"="Opaque" }
-        Cull off
         LOD 100
+
+        //we turn off culling here so that the inside of the surface this material is applied to is being rendered.
+        Cull off
 
         Pass
         {
@@ -48,7 +50,18 @@ Shader "Unlit/360PanoShader"
             fixed4 frag (v2f i) : SV_Target
             {
                 // sample the texture
-                fixed4 col = tex2D(_MainTex, i.uv);
+                //fixed4 col = tex2D(_MainTex, i.uv);
+                fixed4 col;
+
+                if (unity_StereoEyeIndex == 0){
+                    //set left eye colour
+                    col = tex2D(_MainTex, i.uv);
+                }
+                else {
+                    //set right eye colour
+                    col = tex2D(_MainTex, i.uv);
+                }
+
                 // apply fog
                 UNITY_APPLY_FOG(i.fogCoord, col);
                 return col;

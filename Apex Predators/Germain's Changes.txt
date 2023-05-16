@@ -44,6 +44,15 @@
 - Created Mirror prefab
 	> Uses camera and render texture to produce mirror functionality
 
+6. Integrated functionality to portals and created starter prefabs for the Earthwall and EarthProjectile
+- Added functionality to portals 
+	> Removed skybox sphere colliders (everything in the play area was colliding with it).
+	> Added Portal script to teleport any object entering a portal to the other portal.
+	> Improved portal prefab to include trigger box and teleport location
+- Created the starting prefabs for the EarthWall and EarthProjectile
+	> EarthWall - 3D cube, RigidBody, WallMaterial, Script
+	> EarthProjectile - 3D shphere, RigidBody, ProjectileMaterial
+	
 
 
 
