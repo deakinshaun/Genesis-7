@@ -14,14 +14,17 @@ public class Anim_Controller : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        GetComponent<Animation>().Rewind();
+        GetComponent<Animation>().Play();
+        GetComponent<Animation>().Sample();
+        GetComponent<Animation>().Stop();
+
     }
 
-    public void Rewind(string Cup_Spill)
-    {
-        if (Input.GetKeyDown("I"))
-        {
-            print("I pressed");
-        }
-    }
+    //public void Rewind(string Cup_Spill)
+    //{
+    // GetComponent<Animation>().Rewind();
+    //rewinds animation clips
+    //Debug.Log("I pressed rewinding animcations");
+    //}
 }
