@@ -1,29 +1,49 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using Photon.Bolt;
+using TMPro;
 
-public class Camera : Photon.Bolt.EntityBehaviour<IPlayerState1>
+public class Camera : MonoBehaviour
 {
 
     public Material camMaterial;
 
+    public TextMeshProUGUI outputText;
+
     private WebCamTexture wcTexture;
 
+    private int currentCamera = 0;
 
-    public override void Attached()
+    // Start is called before the first frame update
+    void Start()
     {
-        if (entity.IsOwner)
-        {
         wcTexture = new WebCamTexture();
         camMaterial.mainTexture = wcTexture;
-        }
-
+        updateCameraList();
     }
 
-    public override void SimulateOwner()
+    private void updateCameraList()
     {
-        if (!wcTexture.isPlaying && entity.IsOwner)
+        outputText.text = "";
+        foreach (WebCamDevice d in WebCamTexture.devices)
+        {
+            outputText.text += d.name + (d.name == wcTexture.name ? "*" : "") + "\n";
+        }
+    }
+
+    public void nextCamera()
+    {
+        currentCamera = (currentCamera + 1) % WebCamTexture.devices.Length;
+        wcTexture.Stop();
+        wcTexture.deviceName = WebCamTexture.devices[currentCamera].name;
+        wcTexture.Play();
+    }
+
+
+    // Update is called once per frame
+    void Update()
+    {
+        if (!wcTexture.isPlaying)
         {
             wcTexture.Play();
         }
