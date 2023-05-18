@@ -3,7 +3,13 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - Ground
+  - Right Pointer
+  - Left Pointer
+  - ProjectileGesture
+  - WallGesture
+  - Projectile
   layers:
   - Default
   - TransparentFX

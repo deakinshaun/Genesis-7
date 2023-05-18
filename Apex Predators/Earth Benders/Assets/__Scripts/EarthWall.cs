@@ -8,23 +8,19 @@ public class EarthWall : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-
-        if (collision.gameObject.name == "EarthProjectile")
+        if (collision.gameObject.tag == "Projectile")
         {
             health -= 1;
             Destroy(collision.gameObject);
         }
-
     }
 
     // Update is called once per frame
     void Update()
     {
-
         if (health < 1)
         {
-            Destroy(this);
+            Destroy(this.gameObject);
         }
-
     }
 }

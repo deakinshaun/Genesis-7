@@ -44,7 +44,7 @@
 - Created Mirror prefab
 	> Uses camera and render texture to produce mirror functionality
 
-6. Integrated functionality to portals and created starter prefabs for the Earthwall and EarthProjectile
+6. Integrated functionality to portals and created starter prefabs for the Earth Wall and Earth Projectile
 - Added functionality to portals 
 	> Removed skybox sphere colliders (everything in the play area was colliding with it).
 	> Added Portal script to teleport any object entering a portal to the other portal.
@@ -52,7 +52,22 @@
 - Created the starting prefabs for the EarthWall and EarthProjectile
 	> EarthWall - 3D cube, RigidBody, WallMaterial, Script
 	> EarthProjectile - 3D shphere, RigidBody, ProjectileMaterial
-	
 
-
-
+7. Added EarthBending powers (EarthProjectile, EarthWall) using gestures (trigger balls)
+- Added 3D GestureRecognition third party tool (MiVRy)
+	> Created Gestures for abilities using the GestureManager
+	> Hooked up abilitys to specific gestures detected using the GestureEventProcessor (gameObject and script)
+	> NOTE - NOT USING THIS TOOL AS THE LICENSING WAS PREVENTING USAGE, HENCE NEW GESTURE METHODS BELOW.
+- Player
+	> Added CollisionManager with CollisionsManagement (script)
+	> Added EntitiySpawnLocation Game Object
+- Controllers
+	> Added ControllerCollisions (Script) to detect collisions
+	> Added sphere collider & set to Is Trigger
+- Added gesture trigger balls to player
+	> Each have sphere collider(Is Trigger) and Rigidbody(IsKinematic)
+	> Have transparent Gesture Material
+	> EarthProjectile Gesture - ONE BALL placed at right hip level
+	> EarthWall Gesture - TWO BALLS placed up high above player head
+- MISC
+	> Gave ground planes a "Ground" tag
