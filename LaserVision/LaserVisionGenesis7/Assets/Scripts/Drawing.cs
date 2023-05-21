@@ -1,18 +1,45 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
+using UnityEngine.UI;
+using Photon.Bolt;
 
-public class Drawing : MonoBehaviour
+public class Drawing : Photon.Bolt.EntityBehaviour<IPlayerState1>
 {
-    // Start is called before the first frame update
-    void Start()
+    public GameObject drawPoint;
+    public GameObject drawSpawn;
+
+    public override void Attached()
     {
-        
+        state.OnDraw = Draw;
+        state.OnDrawR = DrawR;
+    }
+    public void Draw()
+    {
+        {
+            Instantiate(drawPoint, drawSpawn.transform);
+        }
     }
 
-    // Update is called once per frame
-    void Update()
+    public void DrawR()
     {
-        
+            drawSpawn.transform.DetachChildren();
+    }
+
+    public void drawingPress()
+    {
+        if (entity.IsOwner)
+        {
+            state.Draw();
+        } 
+    }
+
+    public void drawingRelease()
+    {
+        if (entity.IsOwner)
+        {
+            state.DrawR();
+        }
     }
 }
