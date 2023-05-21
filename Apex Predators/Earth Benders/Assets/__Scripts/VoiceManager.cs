@@ -63,8 +63,8 @@ public class VoiceManager : MonoBehaviourPunCallbacks
     {
         VoiceConnection theVoiceConnection = GetComponent<VoiceConnection>();
         RoomOptions theRoomOptions = new RoomOptions();
-        TypedLobby theLobby = new TypedLobby("ApplicationLobby", LobbyType.Default);
-        theVoiceConnection.Client.OpJoinOrCreateRoom(new EnterRoomParams { RoomName="ApplicationRoom", RoomOptions = theRoomOptions, Lobby = theLobby });
+        TypedLobby theLobby = new TypedLobby("EarthBendersLobby", LobbyType.Default);
+        theVoiceConnection.Client.OpJoinOrCreateRoom(new EnterRoomParams { RoomName = "EarthBendersRoom", RoomOptions = theRoomOptions, Lobby = theLobby });
     }
 
     public override void OnJoinedRoom()

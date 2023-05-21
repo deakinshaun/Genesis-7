@@ -10,11 +10,13 @@ TagManager:
   - ProjectileGesture
   - WallGesture
   - Projectile
+  - RoomLight
+  - SamplesInfoPanel
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - PlayerHead
   - Water
   - UI
   - 
