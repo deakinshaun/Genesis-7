@@ -6,17 +6,16 @@ using UnityEngine.Events;
 [RequireComponent(typeof(Collider))]
 public class ClickHandler : MonoBehaviour
 {
-    public UnityEvent upEvent;
-    public UnityEvent downEvent;
+    public UnityEvent contactEvent;
 
-    void OnMouseDown()
+    void OnTriggerEnter(Collider other)
     {
-        downEvent?.Invoke();
+        contactEvent?.Invoke();
     }
 
-    void OnMouseUp()
+    void OnTriggerExit(Collider other)
     {
-        upEvent?.Invoke();
+        contactEvent?.Invoke();
     }
 
 }
