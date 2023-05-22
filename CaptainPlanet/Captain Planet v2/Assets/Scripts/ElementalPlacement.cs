@@ -6,88 +6,84 @@ using UnityEngine.XR.ARSubsystems;
 
 public class ElementalPlacement : MonoBehaviour
 {
+    public GameObject fireElement;
+    public GameObject firePlacement;
 
-    public GameObject arObjectToSpawn;
-    public GameObject placementIndicator;
-    
     private GameObject spawnedObject;
-    private Pose PlacementPose;
-    private ARRaycastManager aRRaycastManager;
-    private bool placementPoseIsValid = false;
+    private Pose placementPose;
+    private ARRaycastManager arRaycastManager;
+    private bool isPlacementPoseValid = false;
     private static List<ARRaycastHit> hits = new List<ARRaycastHit>();
 
     void Start()
     {
-        aRRaycastManager = FindObjectOfType<ARRaycastManager>();
-        
+        arRaycastManager = FindObjectOfType<ARRaycastManager>();
     }
 
     void Update()
     {
-        if(Input.touchCount > 0)
+        HandleTouchInput();
+        UpdatePose();
+        UpdateIndicator();
+    }
+
+    void HandleTouchInput()
+    {
+        if (Input.touchCount > 0)
         {
             Touch touch = Input.GetTouch(0);
 
-            if(touch.phase == TouchPhase.Began)
+            if (touch.phase == TouchPhase.Stationary)
             {
-                var touchPosition = touch.position;
-
+                Vector2 touchPosition = touch.position;
                 bool isOverUI = touchPosition.IsPointOverUIObject();
 
-                if (!isOverUI && aRRaycastManager.Raycast(touchPosition, hits, UnityEngine.XR.ARSubsystems.TrackableType.PlaneWithinPolygon))
+                if (!isOverUI && arRaycastManager.Raycast(touchPosition, hits, TrackableType.PlaneWithinPolygon))
                 {
-                    ARPlaceObject();
+                    SummonFire();
                 }
             }
         }
-        /*if (placementPoseIsValid && Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Began)
-        {
-            
-        }
-        */
-
-        UpdatePlacementPose();
-        UpdatePlacementIndicator();
     }
 
-
-
-    void ARPlaceObject()
+    void SummonFire()
     {
-        spawnedObject = Instantiate(arObjectToSpawn, PlacementPose.position, PlacementPose.rotation);
+        spawnedObject = Instantiate(fireElement, placementPose.position, placementPose.rotation);
     }
 
-    void UpdatePlacementPose()
+    void UpdatePose()
     {
-        var screenCenter = Camera.current.ViewportToScreenPoint(new Vector3(0.5f, 0.5f));
-        var hits = new List<ARRaycastHit>();
-        aRRaycastManager.Raycast(screenCenter, hits, TrackableType.Planes);
+        Vector3 screenCenter = Camera.current.ViewportToScreenPoint(new Vector3(0.5f, 0.5f));
+        List<ARRaycastHit> planeHits = new List<ARRaycastHit>();
+        arRaycastManager.Raycast(screenCenter, planeHits, TrackableType.Planes);
 
-        placementPoseIsValid = hits.Count > 0;
-        if (placementPoseIsValid)
+        isPlacementPoseValid = planeHits.Count > 0;
+        if (isPlacementPoseValid)
         {
-            PlacementPose = hits[0].pose;
+            placementPose = planeHits[0].pose;
         }
     }
 
-    void UpdatePlacementIndicator()
+    void UpdateIndicator()
     {
-        if (placementPoseIsValid)
+        if (isPlacementPoseValid)
         {
-            placementIndicator.SetActive(true);
-            placementIndicator.transform.SetPositionAndRotation(PlacementPose.position, PlacementPose.rotation);
+            firePlacement.SetActive(true);
+            firePlacement.transform.SetPositionAndRotation(placementPose.position, placementPose.rotation);
         }
         else
         {
-            placementIndicator.SetActive(false);
+            firePlacement.SetActive(false);
         }
-        
     }
-
-    
-
-    
-
 }
 
+// arcore raycast study references for the development of this project:
+// https://developers.google.com/ar/develop/unity-arf/hit-test/developer-guide
+// https://developers.google.com/ar/develop/unity-arf/instant-placement/developer-guide
+// https://www.andreasjakl.com/raycast-anchor-placing-ar-foundation-holograms-part-3/
+// https://lukeduckett.medium.com/simple-functions-in-unity-arcore-for-android-4eca92cf5ddf
 
+// credits for 3D models:
+// https://assetstore.unity.com/packages/vfx/particles/spells/elementalist-pack-1-ice-particles-vfx-111603
+// https://assetstore.unity.com/packages/vfx/particles/fire-explosions/fx-fire-ii-25176

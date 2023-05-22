@@ -5,12 +5,10 @@ using UnityEngine;
 public class ElementalBlastSwitcher : MonoBehaviour
 {
     public GameObject shoot;
-
     public GameObject elemental;
-    // Start is called before the first frame update
+  
     void Start()
     {
-        //elemental.SetActive(false);
         shoot.SetActive(false);
         elemental.SetActive(true);
     }
@@ -26,11 +24,5 @@ public class ElementalBlastSwitcher : MonoBehaviour
         shoot.SetActive(false);
         elemental.SetActive(true);
 
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 }

@@ -10,7 +10,7 @@ public class ElementalExplosion : MonoBehaviour
     {
         if (collision.transform.tag == "Fire")
         {
-            Destroy(collision.transform.gameObject); // destroy spider
+            Destroy(collision.transform.gameObject);
             Instantiate(explosion, collision.transform.position, collision.transform.rotation);
         }
     }

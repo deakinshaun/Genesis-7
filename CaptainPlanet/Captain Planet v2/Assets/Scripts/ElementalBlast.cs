@@ -8,17 +8,14 @@ public class ElementalBlast : MonoBehaviour
 {
 
     public Transform arCamera;
-    public GameObject projectile;
-
-    public float shootForce = 700.0f;
-
+    public GameObject iceBlast;
+    private float blastPower = 700.0f;
     private ARRaycastManager aRRaycastManager;
     private static List<ARRaycastHit> hits = new List<ARRaycastHit>();
 
     void Start()
     {
         aRRaycastManager = FindObjectOfType<ARRaycastManager>();
-
     }
 
 
@@ -28,7 +25,7 @@ public class ElementalBlast : MonoBehaviour
         {
             Touch touch = Input.GetTouch(0);
 
-            if (touch.phase == TouchPhase.Began)
+            if (touch.phase == TouchPhase.Stationary)
             {
                 var touchPosition = touch.position;
 
@@ -36,17 +33,11 @@ public class ElementalBlast : MonoBehaviour
 
                 if (!isOverUI && aRRaycastManager.Raycast(touchPosition, hits, UnityEngine.XR.ARSubsystems.TrackableType.PlaneWithinPolygon))
                 {
-                    GameObject bullet = Instantiate(projectile, arCamera.position, arCamera.rotation) as GameObject;
-                    bullet.GetComponent<Rigidbody>().AddForce(arCamera.forward * shootForce);
+                    GameObject blast = Instantiate(iceBlast, arCamera.position, arCamera.rotation) as GameObject;
+                    blast.GetComponent<Rigidbody>().AddForce(arCamera.forward * blastPower);
                 }
             }
         }
-
-        /*if (Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Began)
-        {
-            
-        }
-        */
     }
 }
 
