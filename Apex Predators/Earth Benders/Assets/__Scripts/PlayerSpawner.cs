@@ -4,10 +4,12 @@ using UnityEngine;
 using Fusion;
 using Fusion.Sockets;
 using System;
+using UnityEngine.SceneManagement;
 
 public class PlayerSpawner : MonoBehaviour, INetworkRunnerCallbacks
 {
     private NetworkRunner _runner;
+	public INetworkSceneManager sceneManager;
     private void OnGUI()
     {
         if (_runner == null)
@@ -26,6 +28,7 @@ public class PlayerSpawner : MonoBehaviour, INetworkRunnerCallbacks
     {
         // Create the Fusion runner and let it know that we will be providing user input
         _runner = gameObject.AddComponent<NetworkRunner>();
+		if (sceneManager == null) sceneManager = gameObject.AddComponent<NetworkSceneManagerDefault>();
         _runner.ProvideInput = true;
 
         // Start or join (depends on gamemode) a session with a specific name
@@ -33,6 +36,7 @@ public class PlayerSpawner : MonoBehaviour, INetworkRunnerCallbacks
         {
             GameMode = mode,
             SessionName = "EarthBending",
+			SceneManager = sceneManager
         }) ;
     }
 
