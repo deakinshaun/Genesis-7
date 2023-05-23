@@ -12,16 +12,14 @@ TagManager:
   - Projectile
   - RoomLight
   - SamplesInfoPanel
-  - PlayerParent
-  - Runner
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - PlayerHead
   - Water
   - UI
-  - Player Model
+  - 
   - 
   - 
   - 

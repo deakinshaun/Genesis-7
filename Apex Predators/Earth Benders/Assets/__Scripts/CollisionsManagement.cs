@@ -59,7 +59,7 @@ public class CollisionsManagement : MonoBehaviour
         }
 
         //spawns a earth wall in front of the player 
-        if (OVRInput.GetDown(wallButtonInput1) && OVRInput.GetDown(wallButtonInput2))
+        if (OVRInput.Get(wallButtonInput1) && OVRInput.GetDown(wallButtonInput2))
         {
             Debug.Log("HANDCOUNT: " + wallHandCount);
             if (wallTriggersIsColliding)
