@@ -12,6 +12,7 @@ TagManager:
   - Projectile
   - RoomLight
   - SamplesInfoPanel
+  - PlayerParent
   layers:
   - Default
   - TransparentFX
