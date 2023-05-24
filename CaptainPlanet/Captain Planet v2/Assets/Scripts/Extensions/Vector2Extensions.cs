@@ -20,3 +20,6 @@ public static class Vector2Extensions
         return results.Count > 0;
     }
 }
+
+// Extension made by dilmerv
+// - https://github.com/dilmerv/UnityARBlockARRaycast/
