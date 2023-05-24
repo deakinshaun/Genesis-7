@@ -1,25 +1,23 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using Meta.WitAi;
-using Oculus.Voice;
-using UnityEngine.InputSystem;
 
 public class activeWit : MonoBehaviour
 {
-    [SerializeField]
-    private Wit wit;
+    public List<GameObject> shapes;
 
-
-    // Update is called once per frame
-    private void Update()
+    public void SetColor(string[] response)
     {
-        if(wit == null) wit= GetComponent<Wit>();
-    }
+        string color = response[0];
+        string shape = response[1];
 
-    public void ActivateWit()
-    {
-        wit.Activate();
+        GameObject targetShape = shapes.Find(x => x.name == response[1]);
+        
+        switch(color)
+        {
+            case "red":
+                targetShape.GetComponent<Renderer>().material.color = Color.red;
+                break;
+        }
     }
-
 }

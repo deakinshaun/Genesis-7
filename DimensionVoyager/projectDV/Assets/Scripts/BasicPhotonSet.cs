@@ -12,7 +12,7 @@ using UnityEngine.SceneManagement;
 
 public class BasicPhotonSet : MonoBehaviour, INetworkRunnerCallbacks
 {
-    private NetworkRunner networkManager;
+    //private NetworkRunner networkManager;
     NetworkRunner networkrunner;
     [SerializeField]
     private NetworkObject prefab;
@@ -20,7 +20,8 @@ public class BasicPhotonSet : MonoBehaviour, INetworkRunnerCallbacks
 
     void Start()
     {
-        networkrunner = Instantiate(networkManager);
+        networkrunner = GetComponent<NetworkRunner>();
+        //networkrunner = Instantiate(networkManager);
         networkrunner.name = "NetworkRunner";
 
         var clientTask = InitializeNetworkRunner(networkrunner, GameMode.AutoHostOrClient, NetAddress.Any(), SceneManager.GetActiveScene().buildIndex, null);
@@ -34,7 +35,7 @@ public class BasicPhotonSet : MonoBehaviour, INetworkRunnerCallbacks
         {
             sceneManager = runner.gameObject.AddComponent<NetworkSceneManagerDefault>();
         }
-        networkManager.ProvideInput = true;
+        networkrunner.ProvideInput = true;
 
         return runner.StartGame(new StartGameArgs()
         {
@@ -48,7 +49,7 @@ public class BasicPhotonSet : MonoBehaviour, INetworkRunnerCallbacks
     }
     public void OnPlayerJoined(NetworkRunner runner, PlayerRef player)
     {
-        if (networkManager.IsServer)
+        if (networkrunner.IsServer)
         {
             this.SpawnPlayer(runner, player);
         }
@@ -130,10 +131,10 @@ public class BasicPhotonSet : MonoBehaviour, INetworkRunnerCallbacks
 
     }
 
-    public void UpdateNickName(string name)
+    /*public void UpdateNickName(string name)
     {
         networkManager.GetPlayerObject(networkManager.LocalPlayer).GetComponent<SettupName>().setName(name);
-    }
+    }*/
 
     private void SpawnPlayer(NetworkRunner runner, PlayerRef player)
     {

@@ -20,45 +20,42 @@ MonoBehaviour:
     isPrivate: 0
     createdAt: 2023-05-09T01:24:23-0700
     trainingStatus: 1
-    lastTrainDuration: 37
-    lastTrainedAt: 2023-05-10T09:12:34-0700
-    nextTrainAt: 2023-05-10T09:11:57-0700
+    lastTrainDuration: 27
+    lastTrainedAt: 2023-05-22T00:15:31-0700
+    nextTrainAt: 2023-05-22T00:15:04-0700
     intents:
-    - id: 1284761128791624
-      name: open_resouce
+    - id: 1326762058257584
+      name: Color_this
       entities:
-      - name: action:action
-        id: 598450038915586
-      - name: resource:resource
-        id: 796829728717336
+      - name: color:color
+        id: 197470529901698
+      - name: shape:shape
+        id: 1293041548088054
     entities:
-    - name: action
-      id: 945504083261305
+    - name: color
+      id: 803746904172226
       lookups:
       - free-text
       - keywords
       roles:
-      - name: action
-        id: 598450038915586
+      - name: color
+        id: 197470529901698
       keywords:
-      - keyword: Open
+      - keyword: red
         synonyms:
-        - open
-      - keyword: close
-        synonyms:
-        - close
-    - name: resource
-      id: 221747250601027
+        - red
+    - name: shape
+      id: 564472569105098
       lookups:
       - free-text
       - keywords
       roles:
-      - name: resource
-        id: 796829728717336
+      - name: shape
+        id: 1293041548088054
       keywords:
-      - keyword: menu
+      - keyword: cube
         synonyms:
-        - menu
+        - cube
     traits: []
     voices:
     - name: Cael
