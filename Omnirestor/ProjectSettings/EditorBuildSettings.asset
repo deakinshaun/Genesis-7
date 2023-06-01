@@ -11,4 +11,30 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/FlexibaleController.unity
     guid: 9fc0d4010bbf28b4594072e72b8655ab
-  m_configObjects: {}
+  - enabled: 0
+    path: Assets/Scenes/Capturing 3D model.unity
+    guid: d1ee11b5e7f1c914ba97d3ba74f6442d
+  - enabled: 0
+    path: Assets/Scenes/MenuOmniirestor.unity
+    guid: adcc1cd463d32d546ada01df078122d6
+  - enabled: 0
+    path: Assets/Scenes/SensoryFeedback.unity
+    guid: 7acb11f19b5777b4da65132804381f2f
+  - enabled: 0
+    path: Assets/Scenes/CollectionMeeting.unity
+    guid: 07a3991bcb63ce14e8cf440afcd357c2
+  - enabled: 0
+    path: Assets/Scenes/MultiParticipant.unity
+    guid: 008fc35ea97d38c40b729396afa71d2e
+  - enabled: 0
+    path: 
+    guid: 00000000000000000000000000000000
+  - enabled: 0
+    path: Assets/Scenes/Kinect.unity
+    guid: 97bc2cb5cbd5769408c058235b6a519d
+  m_configObjects:
+    UnityEditor.XR.ARCore.ARCoreSettings: {fileID: 11400000, guid: 5094a293ebd67a04cbcce9f2865997ef, type: 2}
+    UnityEditor.XR.ARKit.ARKitSettings: {fileID: 11400000, guid: 7dd5d0edef342174a880b4b659e64cd9, type: 2}
+    com.unity.xr.magicleap.magic_leap_settings: {fileID: 11400000, guid: e8a81b2d7eb6b404eb7fcae7a654a7ee, type: 2}
+    com.unity.xr.management.loader_settings: {fileID: 11400000, guid: 079ff08d4d8994643b502be0f9620a3a, type: 2}
+    com.unity.xr.openxr.settings4: {fileID: 11400000, guid: 01d1fb2573e23804f80d9b26ac6282c6, type: 2}
