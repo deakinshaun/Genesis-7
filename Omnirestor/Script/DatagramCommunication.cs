@@ -51,7 +51,7 @@ public class DatagramCommunication
     public void sendControllerDetails(ControllerDetails details)
     {
         byte[] data = details.serialize();
-        udpClient.Send(data, data.Length, "192.168.137.155", port);
+        udpClient.Send(data, data.Length, "10.141.24.228", port);
     }
 }
 
